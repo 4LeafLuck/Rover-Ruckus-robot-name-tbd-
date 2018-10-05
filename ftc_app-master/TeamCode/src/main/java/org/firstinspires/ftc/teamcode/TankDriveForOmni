@@ -1,0 +1,30 @@
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.Range;
+
+@TeleOp(name = "TankDriveForOmni", group = "Tele Op")
+public class TankDriveForOmni extends OpMode{
+    DcMotor rightFront;
+    DcMotor leftFront;
+    DcMotor rightBack;
+    DcMotor leftBack;
+    public void init(){
+        rightFront = hardwareMap.dcMotor.get("rightFront");
+        leftFront = hardwareMap.dcMotor.get("leftFront");
+        rightBack = hardwareMap.dcMotor.get("rightBack");
+        leftBack = hardwareMap.dcMotor.get("leftBack");
+
+    }
+    public void loop(){
+        rightFront = gamepad1.right_stick_y;
+        rightBack = gamepad1.right_stick_y;
+        leftFront = gamepad1.left_stick_y;
+        leftBack = gamepad1.left_stick_y;
+        telemetry.addData("Right Side", gamepad1.right_stick_y);
+        telemetry.addData("Left Side", gamepad1.left_stick_y);
+    }
+}
